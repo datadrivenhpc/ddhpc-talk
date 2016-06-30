@@ -88,24 +88,41 @@
       <!------------------------------------------------------------------------------------------->
 
 
-      <!-- SLIDE XX -->
-      <!------------------------------------------------------------------------------------------->
+
       <section>
-        <h2>Key Characteristic</h2>
-        <p>Bad fit / mapping to the HPC usage model. For example:</p>
+        <h2>Some Examples</h2>
+
         <ul>
-          <li>Data-intensive analytics rely on predictable I/O, but there are no QoS contracts for I/O </li>
-          <li>Federation relies on network connectivity, but there are no QoS contracts for that either</li>
-          <li>Many-task applications require finegrained and flexible task placement</li>
-          <li>Dynamic / non-deterministic algorithms need flexible resource allocation, but the model is static </li>
+          <li>Diverging from tightly-coupled monoliths</li>
+          <li class="">Multi-component workflows, many-task, etc.</li>
+          <li class="">Not always compute-centric</li>
+          <li class="">Applications that come from a non-HPC context</li>
+          <li class="">Distributed, leverage multiple platforms and federations</li>
+          <li class="">Traditionalists claim: <i>applications HPC systems weren't designed for ... </i></li>
+
         </ul>
+
+
+
+
+        <aside class="notes">
+          <ul>
+            <li>Depending who you talk to </li>
+          </ul>
+        </aside>
+
       </section>
-      <!------------------------------------------------------------------------------------------->
+
+
+
 
       <!-- SLIDE XX -->
       <!------------------------------------------------------------------------------------------->
       <section>
-        <h2>Diverse "Cultures" and Backgrounds</h2>
+        <h2>Community &amp; Context</h2>
+
+        <p>Heterogeneous: diverse "cultures" and backgrounds:</p>
+
         <ul>
           <li class="">Wide spectrum of different scientific domains </li>
           <ul>
@@ -120,6 +137,43 @@
             drastically different levels of expertise !</h4>
           </ul>
         </span>
+      </section>
+      <!------------------------------------------------------------------------------------------->
+
+
+      <!-- SLIDE XX -->
+      <!------------------------------------------------------------------------------------------->
+      <section>
+        <h2>Ecosystem</h2>
+        <ul>
+          <li class="">Applications build on higher-level tools and frameworks for execution and resource management:</li>
+          <ul>
+            <li class="">Scientific workflow systems (Dispel4Py, Pegasus, ...)</li>
+            <li class="">Workload management systems (Pilot jobs, Storm, ...)</li>
+            <li class="">Distributed systems (Globus, Condor, ...)</li>
+          </ul>
+          <li class="">Different languages and runtime environments (Python, R, C, Java, ...) </li>
+          <li class="">Dependencies / interaction with external services an data sources </li>
+        </ul>
+        <aside class="notes">
+          <ul>
+            <li>Not just individual applications, but frameworks, etc.</li>
+          </ul>
+        </aside>
+      </section>
+      <!------------------------------------------------------------------------------------------->
+
+      <!-- SLIDE XX -->
+      <!------------------------------------------------------------------------------------------->
+      <section>
+        <h2>Relation with HPC</h2>
+        <p>Bad fit / mapping to the HPC usage model. For example:</p>
+        <ul>
+          <li>Data-intensive analytics rely on predictable I/O, but there are no QoS contracts for I/O </li>
+          <li>Federation relies on network connectivity, but there are no QoS contracts for that either</li>
+          <li>Many-task applications require finegrained and flexible task placement</li>
+          <li>Dynamic / non-deterministic algorithms need flexible resource allocation, but the model is static </li>
+        </ul>
       </section>
       <!------------------------------------------------------------------------------------------->
 
