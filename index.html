@@ -2,361 +2,305 @@
 <html lang="en">
 
 <head>
-	<meta charset="utf-8">
+  <meta charset="utf-8">
 
-	<title>Data-Driven HPC | Ole Weidner | University of Edinburgh</title>
+  <title>Data-Driven HPC | Ole Weidner | University of Edinburgh</title>
 
-	<meta name="description" content="Towards Data-Centric HPC Platforms">
-	<meta name="author" content="Ole Weidner">
+  <meta name="description" content="Towards Data-Centric HPC Platforms">
+  <meta name="author" content="Ole Weidner">
 
-	<meta name="apple-mobile-web-app-capable" content="yes">
-	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
 
-	<link rel="stylesheet" href="css/reveal.css">
-	<link rel="stylesheet" href="css/theme/moon.css" id="theme">
+  <link rel="stylesheet" href="css/reveal.css">
+  <link rel="stylesheet" href="css/theme/moon.css" id="theme">
 
-	<!-- Code syntax highlighting -->
-	<link rel="stylesheet" href="lib/css/zenburn.css">
+  <!-- Code syntax highlighting -->
+  <link rel="stylesheet" href="lib/css/zenburn.css">
 
-	<!-- Printing and PDF exports -->
-	<script>
-	var link = document.createElement( 'link' );
-	link.rel = 'stylesheet';
-	link.type = 'text/css';
-	link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
-	document.getElementsByTagName( 'head' )[0].appendChild( link );
-	</script>
+  <!-- Printing and PDF exports -->
+  <script>
+  var link = document.createElement( 'link' );
+  link.rel = 'stylesheet';
+  link.type = 'text/css';
+  link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+  document.getElementsByTagName( 'head' )[0].appendChild( link );
+  </script>
 
-	<!--[if lt IE 9]>
-	<script src="lib/js/html5shiv.js"></script>
-	<![endif]-->
+  <!--[if lt IE 9]>
+  <script src="lib/js/html5shiv.js"></script>
+  <![endif]-->
 </head>
 
 <body>
 
-	<div class="reveal">
-
-		<div class="slides">
-
-			<!------------------------------------------------------------------------------------------->
-
-			<section>
-				<h1><font style="background-color: #ca1e3b">&nbsp; Data-Driven HPC &nbsp;</font></h1>
-				<h3>A Firm Foundation for Second Generation HPC Application Ecosystems</h3>
-				<p></p>
-
-				<p>
-					<small>
-						Ole Weidner &middot; School of Informatics &middot; University of Edinburgh
-					</small>
-					<br>
-					<small>
-						<a href="mailto:ole.weidner@ed.ac.uk">ole.weidner@ed.ac.uk</a> &middot;
-						<a href="https://github.com/datadrivenhpc">https://github.com/datadrivenhpc</a>
-					</small>
-				</p>
-
-			</section>
-
-			<!------------------------------------------------------------------------------------------->
-
-			<section>
-				<h2>About Me</h2>
-				<ul>
-					<li>Big-data platform engineer at LEGO during the day ... </li>
-					<li> ... part-time PhD student at night </li>
-					<li>Previously: research associate at Louisiana State University and Rutgers University</li>
-					<li>Involved in many <i>second generation</i> HPC projects</li>
-					<ul>
-						<li>SAGA: The Simple API for Grid Applications</li>
-						<li>RADICAL-Pilot workload management system</li>
-						<li>ATLAS PanDA workload management system</li>
-						<li>EnsembleMD molecular dynamics toolkit</li>
-					</ul>
-				</ul>
-				<br><br>
-				<!-- <h4 style="background-color: #ca1e3b">On exascale systems, that's going to be <u>a lot</u> of data.</h4> -->
-			</section>
-
-			<!------------------------------------------------------------------------------------------->
-
-			<section>
-
-				<section>
-					<h2>Second Generation HPC Applications</h2>
-
-					<ul>
-						<li class="">Diverging from tightly-coupled monoliths ... (multi-component workflows, many-task, etc.)</li>
-						<li class="">Not necessarily compute-centric ... (e.g., Big-Data)</li>
-						<li class="">Applications that come from a non-HPC context</li>
-						<li class="">Distributed, leverage multiple platforms and federations</li>
-						<li class=""><u>Traditionalists</u> claim: applications HPC systems weren't designed for ... </li>
-
-					</ul>
-
-					<br><br>
-					<h4 class="fragment fade-in" style="background-color: #ca1e3b">
-						"Second generation HPC applications are applications that require
-						<u>insights</u> into their behavior and their environment on an HPC
-						platform in order to operate efficiently."
-					</h4>
-
-
-					<aside class="notes">
-						<ul>
-							<li>Depending who you talk to </li>
-						</ul>
-					</aside>
-
-				</section>
-
-				<!------------------------------------------------------------------------------------------->
-
-				<section>
-					<h2>Diverse Cultures and Backgrounds</h2>
-					<ul>
-						<li class="">Many different scientific domains </li>
-						<li class=""><i>Scientist-Developers</i> on the rise! </li>
-						<li class="">Computer scientists "experimenting" at scale</li>
-						<li class="">Drastically different expectations and levels and expertise </li>
-					</ul>
-				</section>
-
-				<!------------------------------------------------------------------------------------------->
-
-				<section>
-					<h2>A Broad Ecosystem</h2>
-
-					<ul>
-						<li class="">Appliations often build on comunity tools and frameworks for execution:</li>
-						<li class="">Scientific workflow systems (Triana, Pegasus, etc.)</li>
-						<li class="">Higher-level workload management systems (Pilot jobs, Storm, etc.)</li>
-					</ul>
-
-					<aside class="notes">
-						<ul>
-							<li>Not just individual applications, but frameworks, etc.</li>
-						</ul>
-					</aside>
-
-				</section>
-
-
-				<!------------------------------------------------------------------------------------------->
-
-				<section>
-					<h2>Why <u>insight</u> as the common denominator?</h2>
-					<p> DATA = FOUNDATION </p>
-					<P> on appropriate level </p>
-
-						<aside class="notes">
-							<ul>
-								<li>Notes</li>
-							</ul>
-						</aside>
-
-					</section>
-
-				</section>
-
-				<!------------------------------------------------------------------------------------------->
-
-				<section>
-
-
-					<section>
-						<h2>Data = <u>Foundation for Insights</u></h2>
-						v.s.<br><br>
-						<h2><font style="background-color: #ca1e3b">&nbsp; HPC Platform Data Drought &nbsp;</font></h2>
-					</section>
-
-					<!------------------------------------------------------------------------------------------->
-
-					<section>
-						<h2>Consequence: Homegrown Solution</h2>
-						- Overhead
-						- Not portable
-						- Loss of focus
-					</section>
-
-				</section>
-
-
-
-				<!------------------------------------------------------------------------------------------->
-
-				<section>
-
-					<section>
-						<h2>Bringing Data To HPC</h2>
-					</section>
-
-					<section>
-						<h2><font style="background-color: #ca1e3b">&nbsp; Challenges &nbsp;</font></h2>
-						<p> ( ... from drought to deluge )
-							<ul>
-								<li class="">Scope</li>
-								<li class="">(Exa-)Scale</li>
-								<li class="">Level of </li>
-							</ul>
-						</section>
-
-						<section>
-							<h2>Bringing <u>Big</u>-Data To HPC</h2>
-							<p>( ... not the way you might think )</p>
-
-						</section>
-
-						<section>
-							<h2>Assumption 1</h2>
-						</section>
-
-						<section>
-							<h2>Assumption 2</h2>
-						</section>
-
-						<section>
-							<h2>Assumption 3</h2>
-						</section>
-
-						<section>
-							<h2>Assumption 4</h2>
-						</section>
-
-					</section>
-
-
-
-					<!------------------------------------------------------------------------------------------->
-
-					<section>
-
-						<section>
-							<h2>DDHPC Implementation</h2>
-						</section>
-
-						<section>
-							<h2>Decoupled Architecture</h2>
-						</section>
-
-						<section>
-							<h2>Assumption 1</h2>
-						</section>
-
-						<section>
-							<h2>Assumption 2</h2>
-						</section>
-
-						<section>
-							<h2>Assumption 3</h2>
-						</section>
-
-						<section>
-							<h2>Assumption 4</h2>
-						</section>
-
-					</section>
-
-					<!------------------------------------------------------------------------------------------->
-
-					<section>
-
-						<section>
-							<h2>Attempt of an Evaluatiom</h2>
-						</section>
-
-						<section>
-							<h2>What are the Metrics ?</h2>
-						</section>
-
-						<section>
-							<h2>Use-Case Study 1</h2>
-						</section>
-
-						<section>
-							<h2>Use-Case Study 2</h2>
-						</section>
-
-						<section>
-							<h2>Scalability</h2>
-						</section>
-
-					</section>
-
-
-					<!------------------------------------------------------------------------------------------->
-
-					<section>
-
-						<section>
-							<h2>Outlook</h2>
-						</section>
-
-						<section>
-							<h2>... </h2>
-						</section>
-
-
-
-					</section>
-
-
-					<section style="text-align: left;">
-						<h1>THANK YOU</h1>
-						<p>
-							Slides available online: <br>
-							<a href="https://datadrivenhpc.github.io/ddhpc-talk/">
-								https://datadrivenhpc.github.io/ddhpc-talk/</a>
-							</p>
-						</section>
-
-					</div>
-
-				</div>
-
-				<script src="lib/js/head.min.js"></script>
-				<script src="js/reveal.js"></script>
-
-				<script>
-
-				// Full list of configuration options available at:
-				// https://github.com/hakimel/reveal.js#configuration
-				Reveal.initialize({
-					controls: true,
-					progress: true,
-					history: true,
-					center: true,
-
-					parallaxBackgroundImage: "./images/parallax.jpg",
-
-					// Parallax background size
-					parallaxBackgroundSize: "3000px 1694px", // - currently only pixels are supported (don't use % or auto)
-
-					// Number of pixels to move the parallax background per slide
-					// - Calculated automatically unless specified
-					// - Set to 0 to disable movement along an axis
-					// parallaxBackgroundHorizontal: 20,
-					// parallaxBackgroundVertical: 50,
-
-					slideNumber: true,
-					slideNumber: 'c/t',
-
-					transition: 'slide', // none/fade/slide/convex/concave/zoom
-
-					// Optional reveal.js plugins
-					dependencies: [
-						{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
-						{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-						{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-						{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
-						{ src: 'plugin/zoom-js/zoom.js', async: true },
-						{ src: 'plugin/notes/notes.js', async: true }
-					]
-				});
-
-				</script>
-
-			</body>
-			</html>
+  <div class="reveal">
+
+    <div class="slides">
+
+      <!-- SLIDE 01 -->
+      <!------------------------------------------------------------------------------------------->
+      <section>
+        <h1><font style="background-color: #ca1e3b">&nbsp; Data-Driven HPC &nbsp;</font></h1>
+        <h3>A Firm Foundation for Second Generation HPC Application Ecosystems</h3>
+        <p></p>
+        <p>
+          <small>
+            Ole Weidner &middot; School of Informatics &middot; University of Edinburgh
+          </small>
+          <br>
+          <small>
+            <a href="mailto:ole.weidner@ed.ac.uk">ole.weidner@ed.ac.uk</a> &middot;
+            <a href="https://github.com/datadrivenhpc">https://github.com/datadrivenhpc</a>
+          </small>
+        </p>
+      </section>
+      <!------------------------------------------------------------------------------------------->
+
+      <!-- SLIDE XX -->
+      <!------------------------------------------------------------------------------------------->
+      <section>
+        <h2>About</h2>
+        <ul>
+          <li>Big-data platform engineer at LEGO System A/S in Denmark during the day </li>
+          <li> ... and part-time PhD student at the University of Edinburgh night </li>
+          <li>Previously: research associate at Louisiana State University and Rutgers University, USA</li>
+          <li>Have been involved for more then 10 years in many <i>second generation</i> HPC application projects</li>
+          <ul>
+            <li>SAGA: The Simple API for Grid Applications</li>
+            <li>RADICAL-Pilot workload management system</li>
+            <!-- <li>ATLAS PanDA workload management system</li> -->
+            <li>EnsembleMD molecular dynamics toolkit</li>
+          </ul>
+        </ul>
+        <br><br>
+      </section>
+      <!------------------------------------------------------------------------------------------->
+
+
+      <!-- SLIDE XX -->
+      <!------------------------------------------------------------------------------------------->
+      <section>
+        <h2>2nd Generation HPC Applications</h2>
+      </section>
+      <!------------------------------------------------------------------------------------------->
+
+
+      <!-- SLIDE XX -->
+      <!------------------------------------------------------------------------------------------->
+      <section>
+        <h2>Key Characteristic</h2>
+        <p>Bad fit / mapping to the HPC usage model. For example:</p>
+        <ul>
+          <li>Data-intensive analytics rely on predictable I/O, but there are no QoS contracts for I/O </li>
+          <li>Federation relies on network connectivity, but there are no QoS contracts for that either</li>
+          <li>Many-task applications require finegrained and flexible task placement</li>
+          <li>Dynamic / non-deterministic algorithms need flexible resource allocation, but the model is static </li>
+        </ul>
+      </section>
+      <!------------------------------------------------------------------------------------------->
+
+      <!-- SLIDE XX -->
+      <!------------------------------------------------------------------------------------------->
+      <section>
+        <h2>Diverse "Cultures" and Backgrounds</h2>
+        <ul>
+          <li class="">Wide spectrum of different scientific domains </li>
+          <ul>
+            <li> Some of them with no computational "traditions" </li>
+          </ul>
+          <li class=""><i>Scientist-Developers</i> (<i>computational-*ist</i>) are on the rise! </li>
+          <li class="">Computer scientists "experimenting" at scale</li>
+        </ul>
+        <span class="fragment fade-in">
+          <h3> =</h3>
+          <h4 style="background-color: #ca1e3b">Drastically different user expectations and
+            drastically different levels of expertise !</h4>
+          </ul>
+        </span>
+      </section>
+      <!------------------------------------------------------------------------------------------->
+
+
+      <!-- SLIDE XX -->
+      <!------------------------------------------------------------------------------------------->
+      <section>
+        <h2>Main chanllenge: Inefficiency &amp; Waste</h2>
+        <ul>
+          <li>Poor performance due to unfavorable resource mapping</li>
+          <li>Even worse: premature termination</li>
+          <ul>
+            <li>No results = wasted CPU hours and $$$ for the user</li>
+            <li>"Hollow utilization" for the platform provider</li>
+            <li>Example: application runs out of wall-time before producing a result</li>
+          </ul>
+        </ul>
+      </section>
+      <!------------------------------------------------------------------------------------------->
+
+
+      <!-- SLIDE XX -->
+      <!------------------------------------------------------------------------------------------->
+      <section>
+        <h2>A Way Forward: Observe and React</h2>
+        <p>Observe application behavior (intrinsic) and the behavior of the
+          environment (extrinsic) and react accordingly, based on
+          your own set of rules:
+        </p>
+
+        <ul>
+          <li>to converge towards optimal efficiency</li>
+          <li>(or at least) prevent waste</li>
+        </ul>
+      </section>
+      <!------------------------------------------------------------------------------------------->
+
+      <!-- SLIDE XX -->
+      <!------------------------------------------------------------------------------------------->
+      <section>
+        <h2>Observe and React: Some Examples</h2>
+        <ul>
+          <li>If I/O degrades below a critical point, migrate affected processes or terminate application</li>
+          <li>If node memory is exhausted, reduce task density on the node or reduce data / array sizes</li>
+          <li>If CPU utilization is not saturated, increase the task density</li>
+
+        </ul>
+      </section>
+      <!------------------------------------------------------------------------------------------->
+
+      <!-- SLIDE XX -->
+      <!------------------------------------------------------------------------------------------->
+      <section>
+        <h2>Our Definition of 2nd Gen Apps</h2>
+
+        <br><br>
+        <h4 style="background-color: #ca1e3b">
+          "Second generation HPC applications are applications that require
+          continuous access to operational data in order to gain <u>insights</u>
+          into their behavior and their environment so they can operate efficiently."
+        </h4>
+      </section>
+      <!------------------------------------------------------------------------------------------->
+
+      <!-- SLIDE XX -->
+      <!------------------------------------------------------------------------------------------->
+      <section>
+        <h2>Data = <u>Foundation for Insights</u></h2>
+        <span class="fragment fade-in">v.s.<br><br></span>
+        <h2><font class="fragment fade-in" style="background-color: #ca1e3b">&nbsp; HPC Platform Data Drought &nbsp;</font></h2>
+      </section>
+      <!------------------------------------------------------------------------------------------->
+
+
+      <!-- SLIDE XX -->
+      <!------------------------------------------------------------------------------------------->
+      <section>
+        <h2>Collect Your Own!?</h2>
+
+        <p>Let the application processes collect their own data on node / OS level
+          while they execute.</p>
+
+          <ul>
+            <li>How can non-system experts do this?</li>
+            <li>How do we get a comprehensive view of the data?</li>
+            <li>How do we filter relevant information from that data?</li>
+            <li>How do we manage at scale? 10,000 task? 100,000 tasks?</li>
+            <li>How do we manage data sharing archival of long-term historical data?</li>
+
+          </ul>
+
+          <br><br>
+          <h3><font class="fragment fade-in" style="background-color: #ca1e3b">&nbsp; Doesn't really work on application level (at scale) &nbsp;</font></h3>
+        </section>
+        <!------------------------------------------------------------------------------------------->
+
+        <!-- SLIDE XX -->
+        <!------------------------------------------------------------------------------------------->
+        <section>
+          <h2 style="background-color: #ca1e3b">Data-Driven HPC</h2>
+          <p>Apply big data principles, techniques and best practices on platform
+            level to manage and provision operational data.</p>
+            <ul>
+              <li>1</li>
+              <li>2</li>
+              <li>3</li>
+            </ul>
+          </section>
+          <!------------------------------------------------------------------------------------------->
+
+
+          <!-- SLIDE XX -->
+          <!------------------------------------------------------------------------------------------->
+          <section>
+            <h2>Data Scope &amp; Entropy</h2>
+            <p>Different user groups and applications require different data content,
+              frequency and resolution:
+            </p>
+            <ul>
+              <li>A non-expert users might only want a high-level warning, e.g., "I/O performance is terrible. You should abort."</li>
+              <li>A resource management systems might want full real-time data streams and additionally some historical data to make scheduling decissions.</li>
+            </ul>
+          </section>
+          <!------------------------------------------------------------------------------------------->
+
+
+
+          <section style="text-align: left;">
+            <h1>THANK YOU</h1>
+            <p>
+              Slides available online: <br>
+              <a href="https://datadrivenhpc.github.io/ddhpc-talk/">
+                https://datadrivenhpc.github.io/ddhpc-talk/</a>
+              </p>
+            </section>
+
+          </div>
+
+        </div>
+
+        <script src="lib/js/head.min.js"></script>
+        <script src="js/reveal.js"></script>
+
+        <script>
+
+        // Full list of configuration options available at:
+        // https://github.com/hakimel/reveal.js#configuration
+        Reveal.initialize({
+          controls: true,
+          progress: true,
+          history: true,
+          center: true,
+
+          parallaxBackgroundImage: "./images/parallax.jpg",
+
+          // Parallax background size
+          parallaxBackgroundSize: "3000px 1694px", // - currently only pixels are supported (don't use % or auto)
+
+          // Number of pixels to move the parallax background per slide
+          // - Calculated automatically unless specified
+          // - Set to 0 to disable movement along an axis
+          // parallaxBackgroundHorizontal: 20,
+          // parallaxBackgroundVertical: 50,
+
+          slideNumber: true,
+          slideNumber: 'c/t',
+
+          transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+          // Optional reveal.js plugins
+          dependencies: [
+            { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+            { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+            { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+            { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+            { src: 'plugin/zoom-js/zoom.js', async: true },
+            { src: 'plugin/notes/notes.js', async: true }
+          ]
+        });
+
+        </script>
+
+      </body>
+      </html>
