@@ -83,6 +83,21 @@
       <!-- SLIDE XX -->
       <!------------------------------------------------------------------------------------------->
       <section>
+        <h2>Overview</h2>
+        <ol>
+          <li>Second generation HPC applications and their challenges </li>
+          <li>Data as the foundation for insight and mitigation </li>
+          <li>HPC platform data drought</li>
+          <li>Challenges of managing platform data (at scale) </li>
+          </ol>
+      </section>
+      <!------------------------------------------------------------------------------------------->
+
+
+
+      <!-- SLIDE XX -->
+      <!------------------------------------------------------------------------------------------->
+      <section>
         <h2>2nd Generation HPC Applications</h2>
       </section>
       <!------------------------------------------------------------------------------------------->
@@ -252,21 +267,20 @@
       <section>
         <h2>Platform Data Drought</h2>
 
-        <p>To developers and users, HPC systems are essentially a black box.</p>
+        <p>HPC systems are essentially a black box (black hole?).</p>
 
 
           <ul>
             <li>Resource management systems don't provide data:</li>
             <ul>
-              <li>HPC resource management system are asymmetric: control but no feedback </li>
-              <li>Line of sight ends at job state</li>
+              <li>Interfaces are asymmetric: control but no feedback </li>
+              <li>Line of sight ends at the level of job state</li>
+              <li>No APIs exist to introspect beyond job level</li>
             </ul>
-            <li>System data, if collected, is not published </li>
-            <li>No APIs </li>
-          </ul>
+            <li>Platform data, if collected by admin staff, is usually not published </li>
+            <li>High-level statistics, historical data is usually not available programmatically </li>
 
-          <br><br>
-          <h3><font class="fragment fade-in" style="background-color: #ca1e3b">&nbsp; Doesn't really work on application level (at scale) &nbsp;</font></h3>
+          </ul>
         </section>
         <!------------------------------------------------------------------------------------------->
 
@@ -300,11 +314,41 @@
         <section>
           <h2 style="background-color: #ca1e3b">Data-Driven HPC</h2>
           <p>Apply big data principles, techniques and best practices on platform
-            level to manage and provision operational data.</p>
-            <ul>
+            level to manage, analyse and provision operational data.</p>
+            <!-- <ul>
               <li>1</li>
               <li>2</li>
               <li>3</li>
+            </ul> -->
+          </section>
+          <!------------------------------------------------------------------------------------------->
+
+
+          <!-- SLIDE XX -->
+          <!------------------------------------------------------------------------------------------->
+          <section>
+            <h2>Challenge: Scale</h2>
+            <!-- <p>Different user groups and applications require different data content,
+              frequency and resolution:
+            </p>
+            <ul>
+              <li>A non-expert users might only want a high-level warning, e.g., "I/O performance is terrible. You should abort."</li>
+              <li>A resource management systems might want full real-time data streams and additionally some historical data to make scheduling decissions.</li>
+            </ul> -->
+          </section>
+          <!------------------------------------------------------------------------------------------->
+
+
+          <!-- SLIDE XX -->
+          <!------------------------------------------------------------------------------------------->
+          <section>
+            <h2>Challenge: Scope</h2>
+            <p>Different user groups and applications require different data content,
+              frequency and resolution:
+            </p>
+            <ul>
+              <li>A non-expert users might only want a high-level warning, e.g., "I/O performance is terrible. You should abort."</li>
+              <li>A resource management systems might want full real-time data streams and additionally some historical data to make scheduling decissions.</li>
             </ul>
           </section>
           <!------------------------------------------------------------------------------------------->
@@ -313,14 +357,57 @@
           <!-- SLIDE XX -->
           <!------------------------------------------------------------------------------------------->
           <section>
-            <h2>Data Scope &amp; Entropy</h2>
-            <p>Different user groups and applications require different data content,
+            <h2>Challenge: Disruptiveness</h2>
+            <!-- <p>Different user groups and applications require different data content,
               frequency and resolution:
             </p>
             <ul>
               <li>A non-expert users might only want a high-level warning, e.g., "I/O performance is terrible. You should abort."</li>
               <li>A resource management systems might want full real-time data streams and additionally some historical data to make scheduling decissions.</li>
-            </ul>
+            </ul> -->
+          </section>
+          <!------------------------------------------------------------------------------------------->
+
+          <!-- SLIDE XX -->
+          <!------------------------------------------------------------------------------------------->
+          <section>
+            <h2>DDHPC Model</h2>
+            <!-- <p>Different user groups and applications require different data content,
+              frequency and resolution:
+            </p>
+            <ul>
+              <li>A non-expert users might only want a high-level warning, e.g., "I/O performance is terrible. You should abort."</li>
+              <li>A resource management systems might want full real-time data streams and additionally some historical data to make scheduling decissions.</li>
+            </ul> -->
+          </section>
+          <!------------------------------------------------------------------------------------------->
+
+          <!-- SLIDE XX -->
+          <!------------------------------------------------------------------------------------------->
+          <section>
+            <h2>DDHPC Architecture Prototype</h2>
+            <!-- <p>Different user groups and applications require different data content,
+              frequency and resolution:
+            </p>
+            <ul>
+              <li>A non-expert users might only want a high-level warning, e.g., "I/O performance is terrible. You should abort."</li>
+              <li>A resource management systems might want full real-time data streams and additionally some historical data to make scheduling decissions.</li>
+            </ul> -->
+          </section>
+          <!------------------------------------------------------------------------------------------->
+
+
+          <!-- SLIDE XX -->
+          <!------------------------------------------------------------------------------------------->
+          <section>
+            <h2>How to Evaluate</h2>
+            <!-- <p>Different user groups and applications require different data content,
+              frequency and resolution:
+            </p>
+            <ul>
+              <li>A non-expert users might only want a high-level warning, e.g., "I/O performance is terrible. You should abort."</li>
+              <li>A resource management systems might want full real-time data streams and additionally some historical data to make scheduling decissions.</li>
+            </ul> -->
           </section>
           <!------------------------------------------------------------------------------------------->
 
