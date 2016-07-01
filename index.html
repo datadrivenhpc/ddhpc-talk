@@ -64,15 +64,15 @@
       <section>
         <h2>About</h2>
         <ul>
-          <li>Big-data platform engineer at LEGO System A/S in Denmark</li>
+          <li>Big-data engineer at LEGO System A/S in Denmark</li>
           <li>Part-time PhD student at the University of Edinburgh </li>
           <li>Previously: research associate at Louisiana State University and Rutgers University, USA</li>
           <li>Have been involved for more then 10 years in many <i>second generation</i> HPC application projects</li>
           <ul>
             <li>SAGA: The Simple API for Grid Applications</li>
             <li>RADICAL-Pilot workload management system</li>
-            <!-- <li>ATLAS PanDA workload management system</li> -->
             <li>EnsembleMD molecular dynamics toolkit</li>
+            <li>ATLAS PanDA workload management system</li>
           </ul>
         </ul>
         <br><br>
@@ -87,12 +87,12 @@
         <ol>
           <li>Second generation HPC applications and their challenges </li>
           <li>Data as the foundation for insight and mitigation </li>
-          <li>Challenges of observing at scale / on HPC platforms</li>
+          <li>Challenges of managing and collection data at scale on HPC platforms</li>
           <li>The Data-Driven HPC idea</li>
-          <li>DDHPC Prototype Implementation </li>
+          <li>DDHPC prototype implementation </li>
           <li>Evaluation challenges </li>
 
-          </ol>
+        </ol>
       </section>
       <!------------------------------------------------------------------------------------------->
 
@@ -108,235 +108,236 @@
 
 
       <!-- <section>
-        <h2>Some Examples</h2>
+      <h2>Some Examples</h2>
 
-        <ul>
-          <li>Diverging from tightly-coupled monoliths</li>
-          <li class="">Multi-component workflows, many-task, etc.</li>
-          <li class="">Not always compute-centric</li>
-          <li class="">Applications that come from a non-HPC context</li>
-          <li class="">Distributed, leverage multiple platforms and federations</li>
-          <li class="">Traditionalists claim: <i>applications HPC systems weren't designed for ... </i></li>
+      <ul>
+      <li>Diverging from tightly-coupled monoliths</li>
+      <li class="">Multi-component workflows, many-task, etc.</li>
+      <li class="">Not always compute-centric</li>
+      <li class="">Applications that come from a non-HPC context</li>
+      <li class="">Distributed, leverage multiple platforms and federations</li>
+      <li class="">Traditionalists claim: <i>applications HPC systems weren't designed for ... </i></li>
 
-        </ul>
-
-
-
-
-        <aside class="notes">
-          <ul>
-            <li>Depending who you talk to </li>
-          </ul>
-        </aside>
-
-      </section> -->
+    </ul>
 
 
 
 
-      <!-- SLIDE XX -->
-      <!------------------------------------------------------------------------------------------->
-      <section>
-        <h2>Community &amp; Context</h2>
+    <aside class="notes">
+    <ul>
+    <li>Depending who you talk to </li>
+  </ul>
+</aside>
 
-        <p>Many different "cultures" and backgrounds:</p>
-
-        <ul>
-          <li class="">Wide spectrum of different scientific domains </li>
-          <ul>
-            <li> Some of them with no computational "traditions" </li>
-          </ul>
-          <li class=""><i>Scientist-Developers</i> (<i>computational-*ist</i>) and Data Scientists are on the rise! </li>
-
-          <li class="">Software engineers "experimenting" at scale</li>
-        </ul>
-        <span class="fragment fade-in">
-          <br><br>
-          <h4 style="background-color: #ca1e3b">Different user expectations and
-            significantly different levels of expertise !</h4>
-          </ul>
-        </span>
-      </section>
-      <!------------------------------------------------------------------------------------------->
-
-
-      <!-- SLIDE XX -->
-      <!------------------------------------------------------------------------------------------->
-      <section>
-        <h2>Origins of Application Complexity</h2>
-        <ul>
-          <li class="">Applications build on higher-level tools and frameworks for execution and resource management:</li>
-          <ul>
-            <li class="">Scientific workflow systems (dispel4py, Pegasus, ...)</li>
-            <li class="">Workload management systems (Pilot jobs, Storm, ...)</li>
-            <li class="">Distributed systems (Globus, Condor, ...)</li>
-          </ul>
-          <li class="">Different languages and runtime environments (Python, R, C, Java, Matlab ...) </li>
-          <li class="">Dependencies / interaction with external services and data sources </li>
-        </ul>
-        <aside class="notes">
-          <ul>
-            <li>Not just individual applications, but frameworks, etc.</li>
-          </ul>
-        </aside>
-      </section>
-      <!------------------------------------------------------------------------------------------->
-
-      <!-- SLIDE XX -->
-      <!------------------------------------------------------------------------------------------->
-      <section>
-        <h2>Clash with HPC Culture</h2>
-        <p>Suboptimal mapping to the HPC usage model. For example:</p>
-        <ul>
-          <li>Data-intensive analytics rely on predictable I/O, but there are no QoS contracts for I/O </li>
-          <li>Distribution applications rely on network connectivity, but there are no QoS contracts for that either</li>
-          <li>Many-task applications require finegrained and flexible task placement</li>
-          <li>Dynamic / non-deterministic algorithms need flexible resource allocation, but the model is static </li>
-        </ul>
-      </section>
-      <!------------------------------------------------------------------------------------------->
-
-
-      <!-- SLIDE XX -->
-      <!------------------------------------------------------------------------------------------->
-      <section>
-        <h2>Main chanllenge: Inefficiency </h2>
-        <ul>
-          <li>Poor performance due to unfavorable resource mapping</li>
-          <li>Or even worse: premature termination</li>
-          <ul>
-            <li>No results mean wasted CPU hours, energy and $$$</li>
-            <li>"Hollow utilization" for the platform provider</li>
-            <!-- <li>Example: application runs out of wall-time before producing a result</li> -->
-          </ul>
-        </ul>
-      </section>
-      <!------------------------------------------------------------------------------------------->
-
-
-      <!-- SLIDE XX -->
-      <!------------------------------------------------------------------------------------------->
-      <!------------------------------------------------------------------------------------------->
-
-      <!-- SLIDE XX -->
-      <!------------------------------------------------------------------------------------------->
-      <section>
-
-        <section>
-          <h2>Mitigate: Observe and React</h2>
-          <p>Observe application behavior (intrinsic) and the behavior of the
-            environment (extrinsic) and react accordingly, based on a set of rules. For example:
-          </p>
-
-          <ul>
-            <li>If I/O degrades below a critical point, migrate affected processes or terminate application</li>
-            <li>If node memory is exhausted, reduce task density on the node or reduce data / array sizes</li>
-            <li>If CPU utilization is not saturated, increase the task density</li>
-          </ul>
-
-        </section>
-
-        <section>
-          <h2>I/O Cut off point</h2>
-          <img class="test" data-src="./images/cutoff.png"\>
-        </section>
-
-        <section>
-          <h2>Task Packing Sweet Spot</h2>
-          <img class="test" data-src="./images/sweetspot.png"\>
-        </section>
-
-        <section>
-					<h2>Operational Data <br>=<br> <u>Foundation for Mitigation</u></h2>
-				</section>
-
-
-      </section>
-
-      <!------------------------------------------------------------------------------------------->
-
-      <!-- SLIDE XX -->
-      <!------------------------------------------------------------------------------------------->
-      <section>
-        <h2>Another Definition of 2nd Gen Apps</h2>
-
-        <br><br>
-        <h4 style="background-color: #ca1e3b">
-          "Second generation HPC applications require continuous access to
-          operational data in order to <u>observe</u>
-          their behavior and the behavior of their environment so they can operate efficiently."
-        </h4>
-      </section>
-      <!------------------------------------------------------------------------------------------->
-
-
-      <!-- SLIDE XX -->
-      <!------------------------------------------------------------------------------------------->
-      <section>
-        <h2>Problem</h2>
-        <br>
-
-        <h3>Observing on a small scale, in a desktop environment is (relatively) simple</h3>
-        <br>
-        <h3 style="background-color: #ca1e3b">On a large scale on an HPC platform it is very difficult</h3>
-      </section>
-      <!------------------------------------------------------------------------------------------->
-
-
-      <!-- SLIDE XX -->
-      <!------------------------------------------------------------------------------------------->
-      <section>
-        <h2>Why is it difficult?</h2>
-        <ul>
-          <li>User's line-of-sight ends at job-level</li>
-          <li>Data collection requires application instrumentation</li>
-
-          <li>Collection and transport at scale is non-trival</li>
-          <li>Identifying anomalies and patterns at scale is non-trivial </li>
-
-          <br>
-          <h3 style="background-color: #ca1e3b">&nbsp;Result: Many applications continue to "fly blindly"&nbsp;</h3>
-
-
-        </ul>
-      </section>
-      <!------------------------------------------------------------------------------------------->
-
-
-
-      <!-- SLIDE XX -->
-      <!------------------------------------------------------------------------------------------->
-      <section>
-        <h2>Requirements</u></h2>
-        <p>In order to implement strategies against "flying blindly", applications require
-          an environment which provides:</p>
-        <ol>
-          <li>infrastructure to transport, analyze, store application data (at scale)</li>
-          <li>comprehensive real-time operational data from the HPC platform</li>
-          <li>mechanisms to interact with the platform to implement feedback loops</li>
-        </ol>
-      </section>
-      <!------------------------------------------------------------------------------------------->
+</section> -->
 
 
 
 
+<!-- SLIDE XX -->
+<!------------------------------------------------------------------------------------------->
+<section>
+  <h2>Community &amp; Context</h2>
 
-      <!-- SLIDE XX -->
-      <!------------------------------------------------------------------------------------------->
-      <section>
-        <h2>Data-Driven HPC Idea</u></h2>
-        <p>Apply principles, architectures and tools from "big data" to
-        manage application and platform operational data:</p>
-        <ol>
-          <li>Look at HPC clusters and their application as large-scale distributed sensor data</li>
-          <li>Use scalable transport mechanisms to move the data from their sources into an analytics pipeline</li>
-          <li>Use real-time, stream processing to analyze the data for anomalies, patterns, etc.</li>
-        </ol>
+  <p>Many different "cultures" and backgrounds:</p>
 
-        <br><br>
+  <ul>
+    <li class="">Wide spectrum of different scientific domains </li>
+    <ul>
+      <li> Some of them with no computational "traditions" </li>
+    </ul>
+    <li class=""><i>Scientist-Developers</i> (<i>computational-*ist</i>) and Data Scientists are on the rise! </li>
 
-        <h4 style="background-color: #ca1e3b">Maps our problem to a well-known space
+    <li class="">Software engineers "experimenting" at scale</li>
+  </ul>
+  <span class="fragment fade-in">
+    <br><br>
+    <h4 style="background-color: #ca1e3b">Different user expectations and
+      significantly different levels of expertise !</h4>
+    </ul>
+  </span>
+</section>
+<!------------------------------------------------------------------------------------------->
+
+
+<!-- SLIDE XX -->
+<!------------------------------------------------------------------------------------------->
+<section>
+  <h2>Origins of Application Complexity</h2>
+  <ul>
+    <li class="">Applications build on higher-level tools and frameworks for execution and resource management:</li>
+    <ul>
+      <li class="">Scientific workflow systems (dispel4py, Pegasus, ...)</li>
+      <li class="">Workload management systems (Pilot jobs, Storm, ...)</li>
+      <li class="">Distributed systems (Globus, Condor, ...)</li>
+    </ul>
+    <li class="">Different languages and runtime environments (Python, R, C, Java, Matlab ...) </li>
+    <li class="">Dependencies / interaction with external services and data sources </li>
+  </ul>
+  <aside class="notes">
+    <ul>
+      <li>Not just individual applications, but frameworks, etc.</li>
+    </ul>
+  </aside>
+</section>
+<!------------------------------------------------------------------------------------------->
+
+<!-- SLIDE XX -->
+<!------------------------------------------------------------------------------------------->
+<section>
+  <h2>Clash with HPC Culture</h2>
+  <p>Suboptimal mapping to the HPC usage model. For example:</p>
+  <ul>
+    <li>Data-intensive analytics rely on predictable I/O, but there are no QoS contracts for I/O </li>
+    <li>Distribution applications rely on network connectivity, but there are no QoS contracts for that either</li>
+    <li>Many-task applications require finegrained and flexible task placement</li>
+    <li>Dynamic / non-deterministic algorithms need flexible resource allocation, but the model is static </li>
+  </ul>
+</section>
+<!------------------------------------------------------------------------------------------->
+
+
+<!-- SLIDE XX -->
+<!------------------------------------------------------------------------------------------->
+<section>
+  <h2>Main chanllenge: Inefficiency </h2>
+  <ul>
+    <li>Poor performance due to unfavorable resource mapping</li>
+    <li>Or even worse: premature termination</li>
+    <ul>
+      <li>No results mean wasted CPU hours, energy and $$$</li>
+      <li>"Hollow utilization" for the platform provider</li>
+      <!-- <li>Example: application runs out of wall-time before producing a result</li> -->
+    </ul>
+  </ul>
+</section>
+<!------------------------------------------------------------------------------------------->
+
+
+<!-- SLIDE XX -->
+<!------------------------------------------------------------------------------------------->
+<!------------------------------------------------------------------------------------------->
+
+<!-- SLIDE XX -->
+<!------------------------------------------------------------------------------------------->
+<section>
+
+  <section>
+    <h2>Mitigate: Observe and React</h2>
+    <p>Observe application behavior (intrinsic) and the behavior of the
+      environment (extrinsic) and react accordingly, based on a set of rules. For example:
+    </p>
+
+    <ul>
+      <li>If I/O degrades below a critical point, migrate affected processes or terminate application</li>
+      <li>If node memory is exhausted, reduce task density on the node or reduce data / array sizes</li>
+      <li>If CPU utilization is not saturated, increase the task density</li>
+    </ul>
+
+  </section>
+
+  <section>
+    <h2>I/O Cut off point</h2>
+    <img class="test" data-src="./images/cutoff.png"\>
+  </section>
+
+  <section>
+    <h2>Task Packing Sweet Spot</h2>
+    <img class="test" data-src="./images/sweetspot.png"\>
+  </section>
+
+  <section>
+    <h2>Operational Data <br>=<br> <u>Foundation for mitigating inefficiency</u></h2>
+  </section>
+
+
+</section>
+
+<!------------------------------------------------------------------------------------------->
+
+<!-- SLIDE XX -->
+<!------------------------------------------------------------------------------------------->
+<section>
+  <h2>Another Definition of 2nd Gen Apps</h2>
+
+  <br><br>
+  <h4 style="background-color: #ca1e3b">
+    "Second generation HPC applications require continuous access to
+    operational data in order to <u>observe</u>
+    their behavior and the behavior of their environment so they can operate efficiently."
+  </h4>
+</section>
+<!------------------------------------------------------------------------------------------->
+
+
+<!-- SLIDE XX -->
+<!------------------------------------------------------------------------------------------->
+<section>
+  <h2>Problem</h2>
+  <br>
+
+  <h3>Observing on a small scale, in a desktop environment is (relatively) simple</h3>
+  <br>
+  <h3 style="background-color: #ca1e3b">On a large scale on an HPC platform it is very difficult</h3>
+</section>
+<!------------------------------------------------------------------------------------------->
+
+
+<!-- SLIDE XX -->
+<!------------------------------------------------------------------------------------------->
+<section>
+  <h2>Why is it difficult?</h2>
+  <ul>
+    <li>User's line-of-sight ends at the job-level</li>
+    <li>Data collection requires application instrumentation</li>
+
+    <li>Collection and transport at scale is non-trival</li>
+    <li>Identifying anomalies and patterns in a stream of data is not trivial (especially at scale)</li>
+
+    <br>
+    <h3 style="background-color: #ca1e3b">&nbsp;Result: Many applications continue to "fly blindly"&nbsp;</h3>
+
+
+  </ul>
+</section>
+<!------------------------------------------------------------------------------------------->
+
+
+
+<!-- SLIDE XX -->
+<!------------------------------------------------------------------------------------------->
+<section>
+  <h2>Requirements</u></h2>
+  <p>In order to implement strategies against "flying blindly", applications require
+    an environment which provides:</p>
+    <ol>
+      <li>infrastructure to transport, analyze, store application data (at scale)</li>
+      <li>comprehensive real-time operational data from the HPC platform</li>
+      <li>mechanisms to interact with the platform to implement feedback loops</li>
+    </ol>
+  </section>
+  <!------------------------------------------------------------------------------------------->
+
+
+
+
+
+  <!-- SLIDE XX -->
+  <!------------------------------------------------------------------------------------------->
+  <section>
+    <h2>Data-Driven HPC Idea</u></h2>
+    <p>Apply principles, architectures and tools from "big data" / large-scale data analytics to
+      manage application and platform operational data:</p>
+      <ol>
+        <li>Look at HPC clusters and their application as large-scale distributed continuous sensor data</li>
+        <li>Use scalable transport mechanisms to move the data from their sources into an analytics pipeline</li>
+        <li>Use real-time, stream processing to analyze the data for anomalies, patterns, etc.</li>
+        <li>Integrate this with HPC platforms</li>
+      </ol>
+
+      <br><br>
+
+      <h4 style="background-color: #ca1e3b">Maps our problem to a well-known space
         with many established solutions</h4>
 
 
@@ -346,152 +347,176 @@
       <!-- SLIDE XX -->
       <!------------------------------------------------------------------------------------------->
       <section>
-        <h2>Generic Challenge: Scale</h2>
+        <h2>Challenge 1: Scale</h2>
 
         <p>How do we handle (operational) data at scale without impeding the
-        performance of the platforms or applications</p>
+          performance of the platforms or applications</p>
 
-        <ul>
-          <li>How to collect data at scale?</li>
-          <li>How to transport data at scale?</li>
-          <li>How to analyze data at scale?</li>
-        </ul>
-
-
-      </section>
-      <!------------------------------------------------------------------------------------------->
+          <ul>
+            <li>How to collect data at scale?</li>
+            <li>How to transport data at scale?</li>
+            <li>How to analyze data at scale?</li>
+          </ul>
 
 
-      <!-- SLIDE XX -->
-      <!------------------------------------------------------------------------------------------->
-      <section>
-        <h2>HPC Specific Challenge: Scope</h2>
-
-        <ul>
-          <li>Different consumers with different requirements</li>
-          <li>How to transport data at scale?</li>
-          <li>How to analyze data at scale?</li>
-        </ul>
-
-      </section>
-      <!------------------------------------------------------------------------------------------->
+        </section>
+        <!------------------------------------------------------------------------------------------->
 
 
-      <!-- SLIDE XX -->
-      <!------------------------------------------------------------------------------------------->
-      <section>
-        <h2>HPC Specific Challenge: Disruption</h2>
+        <!-- SLIDE XX -->
+        <!------------------------------------------------------------------------------------------->
+        <section>
+          <h2>Challenge 2: Scope and Expertise</h2>
 
-      </section>
-      <!------------------------------------------------------------------------------------------->
+          <p>Different user and application groups require data at different levels, from raw data to high-level signals.
+            How do we account for different requirements? How do we support a
+            broad level of expertises? The majority of users are <u>not</u> data scientits.
+          </p>
 
-
-      <!-- SLIDE XX -->
-      <!------------------------------------------------------------------------------------------->
-      <section>
-        <h2>HPC Specific Challenge: Control</h2>
-
-      </section>
-      <!------------------------------------------------------------------------------------------->
+        </section>
+        <!------------------------------------------------------------------------------------------->
 
 
+        <!-- SLIDE XX -->
+        <!------------------------------------------------------------------------------------------->
+        <section>
+          <h2>Challenge 3: Control and Feedback</h2>
 
-      <!-- SLIDE XX -->
-      <!------------------------------------------------------------------------------------------->
-      <!-- <section>
-        <h2>Operational Data = <u>Foundation for Insights</u></h2>
-        <span class="fragment fade-in">instead of<br><br></span>
-        <h2><font class="fragment fade-in" style="background-color: #ca1e3b">&nbsp; Flying Blind &nbsp;</font></h2>
-      </section> -->
-      <!------------------------------------------------------------------------------------------->
+          <p>Once we have signals, how can we react to them. How do we interact
+            with the resource manager? Where can decision logic be implemented?</p>
+
+
+          </section>
+          <!------------------------------------------------------------------------------------------->
+
 
           <!-- SLIDE XX -->
           <!------------------------------------------------------------------------------------------->
           <section>
-            <h2>DDHPC Model</h2>
-            <!-- <p>Different user groups and applications require different data content,
-              frequency and resolution:
+            <h2>Challenge 4: Integration</h2>
+
+            <p>How would be a data-driven platform be integrated with HPC
+            systems? How to bridge the gap to the resource management / queuing
+            systems? Disruptiveness repels. </p>
+
+
+            </section>
+            <!------------------------------------------------------------------------------------------->
+
+
+
+            <!-- SLIDE XX -->
+            <!------------------------------------------------------------------------------------------->
+            <!-- <section>
+            <h2>Operational Data = <u>Foundation for Insights</u></h2>
+            <span class="fragment fade-in">instead of<br><br></span>
+            <h2><font class="fragment fade-in" style="background-color: #ca1e3b">&nbsp; Flying Blind &nbsp;</font></h2>
+          </section> -->
+          <!------------------------------------------------------------------------------------------->
+
+          <!-- SLIDE XX -->
+          <!------------------------------------------------------------------------------------------->
+          <section>
+            <h2>Research Approach</h2>
+            <p>Build a prototype Data-Driven HPC system that handles
+              data collection and addresses the scale challanges. Explore the
+              other challanges withing this prototype.
             </p>
-            <ul>
-              <li>A non-expert users might only want a high-level warning, e.g., "I/O performance is terrible. You should abort."</li>
-              <li>A resource management systems might want full real-time data streams and additionally some historical data to make scheduling decissions.</li>
-            </ul> -->
-          </section>
-          <!------------------------------------------------------------------------------------------->
+            <!-- <ul>
+            <li>A non-expert users might only want a high-level warning, e.g., "I/O performance is terrible. You should abort."</li>
+            <li>A resource management systems might want full real-time data streams and additionally some historical data to make scheduling decissions.</li>
+          </ul> -->
+        </section>
+        <!------------------------------------------------------------------------------------------->
 
-          <!-- SLIDE XX -->
-          <!------------------------------------------------------------------------------------------->
-          <section>
-            <h2>DDHPC Architecture Prototype</h2>
-            <!-- <p>Different user groups and applications require different data content,
-              frequency and resolution:
-            </p>
-            <ul>
-              <li>A non-expert users might only want a high-level warning, e.g., "I/O performance is terrible. You should abort."</li>
-              <li>A resource management systems might want full real-time data streams and additionally some historical data to make scheduling decissions.</li>
-            </ul> -->
-          </section>
-          <!------------------------------------------------------------------------------------------->
+        <!-- SLIDE XX -->
+        <!------------------------------------------------------------------------------------------->
+        <section>
+          <h2>DDHPC  Prototype</h2>
+          <img class="test" data-src="./images/arch.png"\>
+
+    </section>
+    <!------------------------------------------------------------------------------------------->
 
 
-          <!-- SLIDE XX -->
-          <!------------------------------------------------------------------------------------------->
-          <section>
-            <h2>DDHPC Data Model</h2>
-            <p>Allows "hollistic", drill-down view of application jobs:</p>
-            <ul>
-              <li></li>
-              <li>Custom application data</li>
-            </ul>
-          </section>
-          <!------------------------------------------------------------------------------------------->
+    <!-- SLIDE XX -->
+    <!------------------------------------------------------------------------------------------->
+    <section>
+      <h2>DDHPC Data Model</h2>
+      <p>Allows "hollistic", drill-down view of application jobs:</p>
+      <ul>
+        <li></li>
+        <li>Custom application data</li>
+      </ul>
+    </section>
+    <!------------------------------------------------------------------------------------------->
 
 
-          <!-- SLIDE XX -->
-          <!------------------------------------------------------------------------------------------->
-          <section>
-            <h2>DDHPC API</h2>
-            <ul>
-              <li>Provides access to application job data</li>
-              <li>Allows definition of signals based on data</li>
-              <li>Provides callbacks when a signal is triggerd</li>
-              <li>Allows to access application process controls</li>
-            </ul>
-          </section>
-          <!------------------------------------------------------------------------------------------->
+    <!-- SLIDE XX -->
+    <!------------------------------------------------------------------------------------------->
+    <section>
+      <h2>DDHPC API</h2>
+      <ul>
+        <li>Provides access to application job data</li>
+        <li>Allows definition of signals based on data</li>
+        <li>Provides callbacks when a signal is triggerd</li>
+        <li>Allows to access application process controls</li>
+      </ul>
+    </section>
+    <!------------------------------------------------------------------------------------------->
 
 
 
-          <!-- SLIDE XX -->
-          <!------------------------------------------------------------------------------------------->
-          <section>
-            <h2>Data Collection</h2>
-            <p>A set of data collection services run on each node and forward
-              data to the Kafka messaging servers</p>
-            <ul>
-              <li>ddhpc-resource-sensor: collects resource-level data</li>
-              <li>ddhpc-process-sensor: collects process-level data</li>
-              <li>ddhpc-application-sensor: records custom application signals</li>
-            </ul>
-          </section>
-          <!------------------------------------------------------------------------------------------->
+    <!-- SLIDE XX -->
+    <!------------------------------------------------------------------------------------------->
+    <section>
+      <h2>Data Collection</h2>
+      <p>A set of data collection services run on each node and forward
+        data to the Kafka messaging servers</p>
+        <ul>
+          <li>ddhpc-resource-sensor: collects resource-level data</li>
+          <li>ddhpc-process-sensor: collects process-level data</li>
+          <li>ddhpc-application-sensor: records custom application signals</li>
+        </ul>
+      </section>
+      <!------------------------------------------------------------------------------------------->
 
 
-          <!-- SLIDE XX -->
-          <!------------------------------------------------------------------------------------------->
-          <section>
-            <h2>Control &amp; Data Access</h2>
-            <p>API endpoints and process controller allow application processes
-            to be modified and to access the DDHPC system</p>
-            <ul>
-              <li>ddhpc-api-proxy: local forwarding agent and cache for the API to prevent bottlenecks.</li>
-              <li>ddhpc-process-controller: can set process niceness and
+      <!-- SLIDE XX -->
+      <!------------------------------------------------------------------------------------------->
+      <section>
+        <h2>Control &amp; Data Access</h2>
+        <p>API endpoints and process controller allow application processes
+          to be modified and to access the DDHPC system</p>
+          <ul>
+            <li>ddhpc-api-proxy: local forwarding agent and cache for the API to prevent bottlenecks.</li>
+            <li>ddhpc-process-controller: can set process niceness and
               I/O niceness</li>
             </ul>
           </section>
           <!------------------------------------------------------------------------------------------->
 
 
+
+          <!-- SLIDE XX -->
+          <!------------------------------------------------------------------------------------------->
+          <section>
+            <h2>Where are we? Next steps.</h2>
+              <ul>
+                <li>Simple prototype implemented alongside a 4-node SLURM "toy" cluster in AWS</li>
+                <li>First version of data model and API available<br><br></li>
+
+                <li>Explore different ways to react to signals:</li>
+                <ul>
+                  <li>programmatically in the application</li>
+                  <li>via rules in the </li>
+                </ul>
+
+                <li>Implement some application use-cases.</li>
+                <li>Deploy on a largeer cluster to get started with benchmarking</li>
+              </ul>
+            </section>
+            <!------------------------------------------------------------------------------------------->
 
 
           <section style="text-align: left;">
