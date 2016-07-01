@@ -87,6 +87,7 @@
         <ol>
           <li>Second generation HPC applications and their challenges </li>
           <li>Data as the foundation for insight and mitigation </li>
+
           <li>Challenges of managing platform and application data (at scale) </li>
           <li>HPC platform data drought</li>
           <li>DDHPC Model and Architecture</li>
@@ -153,8 +154,8 @@
           <li class="">Software engineers "experimenting" at scale</li>
         </ul>
         <span class="fragment fade-in">
-          <h3> =</h3>
-          <h4 style="background-color: #ca1e3b">Drastically different user expectations and
+          <br><br>
+          <h4 style="background-color: #ca1e3b">Different user expectations and
             significantly different levels of expertise !</h4>
           </ul>
         </span>
@@ -207,9 +208,9 @@
           <li>Poor performance due to unfavorable resource mapping</li>
           <li>Even worse: premature termination</li>
           <ul>
-            <li>No results = wasted CPU hours, energy and $$$ for the user</li>
+            <li>No results mean wasted CPU hours, energy and $$$</li>
             <li>"Hollow utilization" for the platform provider</li>
-            <li>Example: application runs out of wall-time before producing a result (MORE CONCRETE)</li>
+            <li>Example: application runs out of wall-time before producing a result</li>
           </ul>
         </ul>
       </section>
@@ -241,7 +242,6 @@
             <li>If I/O degrades below a critical point, migrate affected processes or terminate application</li>
             <li>If node memory is exhausted, reduce task density on the node or reduce data / array sizes</li>
             <li>If CPU utilization is not saturated, increase the task density</li>
-
           </ul>
         </section>
 
@@ -262,14 +262,45 @@
       <!-- SLIDE XX -->
       <!------------------------------------------------------------------------------------------->
       <section>
-        <h2>Our Definition of 2nd Gen Apps</h2>
+        <h2>Another Definition of 2nd Gen Apps</h2>
 
         <br><br>
         <h4 style="background-color: #ca1e3b">
           "Second generation HPC applications require continuous access to
-          operational data in order to gain <u>insights</u>
-          into their behavior and their environment so they can operate efficiently."
+          operational data in order to <u>observe</u>
+          their behavior and the behavior of their environment so they can operate efficiently."
         </h4>
+      </section>
+      <!------------------------------------------------------------------------------------------->
+
+
+      <!-- SLIDE XX -->
+      <!------------------------------------------------------------------------------------------->
+      <section>
+        <h2>Problem</h2>
+        <br>
+
+        <h3>Observing on a small scale, in a desktop environment is (relatively) simple</h3>
+        <br>
+        <h3 style="background-color: #ca1e3b">On a large scale on an HPC platform it is very difficult</h3>
+      </section>
+      <!------------------------------------------------------------------------------------------->
+
+
+      <!-- SLIDE XX -->
+      <!------------------------------------------------------------------------------------------->
+      <section>
+        <h2>Why is it difficult?</h2>
+        <ul>
+          <li>Reason</li>
+          <li>Reason</li>
+          <li>Reason</li>
+
+          <br>
+          <h3 style="background-color: #ca1e3b">&nbsp;Result: Most applications are "flying blindly"&nbsp;</h3>
+
+
+        </ul>
       </section>
       <!------------------------------------------------------------------------------------------->
 
@@ -279,7 +310,7 @@
       <!------------------------------------------------------------------------------------------->
       <section>
         <h2>Requirements</u></h2>
-        <p>In order to avoid "flying blindly", applications require
+        <p>In order to implement strategies against "flying blindly", applications require
           an environment which provides:</p>
         <ol>
           <li>infrastructure to transport, analyze, store application data (at scale)</li>
