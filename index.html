@@ -337,7 +337,7 @@
 
       <br><br>
 
-      <h4 style="background-color: #ca1e3b">Maps our problem to a well-known space
+      <h4 class="fragment fade-in" style="background-color: #ca1e3b">Maps our problem to a well-known space
         with many established solutions</h4>
 
 
@@ -358,6 +358,8 @@
             <li>How to analyze data at scale?</li>
           </ul>
 
+          <br><br>
+          <h4 class="fragment fade-in" style="background-color: #ca1e3b">We can turn to big data to solve most of these problems for us</h4>
 
         </section>
         <!------------------------------------------------------------------------------------------->
@@ -373,6 +375,10 @@
             broad level of expertises? The majority of users are <u>not</u> data scientits.
           </p>
 
+          <br><br>
+          <h4 class="fragment fade-in" style="background-color: #ca1e3b">Translates to resarch questions in the area of interfaces</h4>
+
+
         </section>
         <!------------------------------------------------------------------------------------------->
 
@@ -385,6 +391,9 @@
           <p>Once we have signals, how can we react to them. How do we interact
             with the resource manager? Where can decision logic be implemented?</p>
 
+            <br><br>
+            <h4 class="fragment fade-in" style="background-color: #ca1e3b">Translates to resarch questions in the area of system architecture</h4>
+
 
           </section>
           <!------------------------------------------------------------------------------------------->
@@ -395,9 +404,9 @@
           <section>
             <h2>Challenge 4: Integration</h2>
 
-            <p>How would be a data-driven platform be integrated with HPC
-            systems? How to bridge the gap to the resource management / queuing
-            systems? Disruptiveness repels. </p>
+            <p>How would a data-driven platform be integrated with HPC
+            systems? How do we bridge the gap to the resource management / queuing
+            systems? How to avoid disruptiveness? </p>
 
 
             </section>
@@ -420,22 +429,23 @@
             <h2>Research Approach</h2>
             <p>Build a prototype Data-Driven HPC system that handles
               data collection and addresses the scale challanges. Explore the
-              other challanges withing this prototype.
+              other challanges within this prototype, define the research questions.
             </p>
-            <!-- <ul>
-            <li>A non-expert users might only want a high-level warning, e.g., "I/O performance is terrible. You should abort."</li>
-            <li>A resource management systems might want full real-time data streams and additionally some historical data to make scheduling decissions.</li>
-          </ul> -->
         </section>
         <!------------------------------------------------------------------------------------------->
 
         <!-- SLIDE XX -->
         <!------------------------------------------------------------------------------------------->
+
         <section>
           <h2>DDHPC  Prototype</h2>
-          <img class="test" data-src="./images/arch.png"\>
+          <img class="test" data-src="./images/architecture.png"\>
+        </section>
 
-    </section>
+        <section>
+          <h2>DDHPC  Architecture</h2>
+          <img class="test" data-src="./images/arch.png"\>
+        </section>
     <!------------------------------------------------------------------------------------------->
 
 
@@ -445,12 +455,20 @@
       <h2>DDHPC Data Model</h2>
       <p>Allows "hollistic", drill-down view of application jobs:</p>
       <ul>
-        <li></li>
-        <li>Custom application data</li>
+        <li>Job level > process level > thread level</li>
+        <li>Resouce Data</li>
+        <ul><li>CPU counters, memory and filesystem metrics, network and disk I/O counters, </li> </ul>
+        <li>Process Data</li>
+        <ul><li>CPU counters, memory and filesystem metrics, network and disk I/O counters, </li> </ul>
+        <li>Custom application-defined data</li>
       </ul>
     </section>
     <!------------------------------------------------------------------------------------------->
 
+    <section>
+      <h2>DDHPC Data Model</h2>
+      <img class="test" data-src="./images/drilldown.png"\>
+    </section>
 
     <!-- SLIDE XX -->
     <!------------------------------------------------------------------------------------------->
