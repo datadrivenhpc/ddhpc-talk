@@ -87,10 +87,8 @@
         <ol>
           <li>Second generation HPC applications and their challenges </li>
           <li>Data as the foundation for insight and mitigation </li>
-
-          <li>Challenges of managing platform and application data (at scale) </li>
-          <li>HPC platform data drought</li>
-          <li>DDHPC Model and Architecture</li>
+          <li>Challenges of observing at scale / on HPC platforms</li>
+          <li>The Data-Driven HPC idea</li>
           <li>DDHPC Prototype Implementation </li>
           <li>Evaluation challenges </li>
 
@@ -148,8 +146,7 @@
           <ul>
             <li> Some of them with no computational "traditions" </li>
           </ul>
-          <li class=""><i>Scientist-Developers</i> (<i>computational-*ist</i>) are on the rise! </li>
-          <li class=""><i>Data Scientists</i> too </li>
+          <li class=""><i>Scientist-Developers</i> (<i>computational-*ist</i>) and Data Scientists are on the rise! </li>
 
           <li class="">Software engineers "experimenting" at scale</li>
         </ul>
@@ -206,11 +203,11 @@
         <h2>Main chanllenge: Inefficiency </h2>
         <ul>
           <li>Poor performance due to unfavorable resource mapping</li>
-          <li>Even worse: premature termination</li>
+          <li>Or even worse: premature termination</li>
           <ul>
             <li>No results mean wasted CPU hours, energy and $$$</li>
             <li>"Hollow utilization" for the platform provider</li>
-            <li>Example: application runs out of wall-time before producing a result</li>
+            <!-- <li>Example: application runs out of wall-time before producing a result</li> -->
           </ul>
         </ul>
       </section>
@@ -249,6 +246,11 @@
           <img class="test" data-src="./images/sweetspot.png"\>
         </section>
 
+        <section>
+					<h2>Operational Data <br>=<br> <u>Foundation for Mitigation</u></h2>
+				</section>
+
+
       </section>
 
       <!------------------------------------------------------------------------------------------->
@@ -286,9 +288,11 @@
       <section>
         <h2>Why is it difficult?</h2>
         <ul>
-          <li>Reason</li>
-          <li>Reason</li>
-          <li>Reason</li>
+          <li>User's line-of-sight ends at job-level</li>
+          <li>Data collection requires application instrumentation</li>
+
+          <li>Collection and transport at scale is non-trival</li>
+          <li>Identifying anomalies and patterns at scale is non-trivial </li>
 
           <br>
           <h3 style="background-color: #ca1e3b">&nbsp;Result: Many applications continue to "fly blindly"&nbsp;</h3>
